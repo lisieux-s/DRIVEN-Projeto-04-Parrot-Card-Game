@@ -1,0 +1,11 @@
+body {
+    background: #EEF9BF;
+}
+
+article {
+    width: 117px;
+    height: 146px;
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+}
