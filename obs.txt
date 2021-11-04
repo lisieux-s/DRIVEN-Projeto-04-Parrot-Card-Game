@@ -1,1 +1,3 @@
 pq a img nao centraliza direito? tive que usar padding pra consertar
+
+verificar casos de explodir o programa, tipo clicar nas cartas mto rapido
