@@ -1,0 +1,1 @@
+pq a img nao centraliza direito? tive que usar padding pra consertar
