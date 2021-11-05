@@ -1,4 +1,5 @@
 n = prompt("Com quantas cartas você quer jogar?");
+const main = document.querySelector("main");
 let imgBackRandom = [];
 
 //repetir prompt até entrar n válido
@@ -6,65 +7,65 @@ while( (n < 4 || n > 14) || n % 2 !== 0) {
     n = prompt("Com quantas cartas você quer jogar?");
 }
 
-//gerar array com n elementos
+//gerar baralho
 const cardsArray = [];
-for(i = 0; i < n; i++){
+for(let i = 0; i < n; i++){
     cardsArray.push(i);
-    displayCards(cardsArray);
-    //amada??? deu certo????? wtf
-
-    
-}
-for(i = 0; i < n; i++) {
 }
 
-console.log(cardsArray)
+//distribuir os pares de cartas aleatoriamente
+card = [];
+for(let i = 0; i < n; i++) {
+        /*if(i % 2 === 0) {
+            let cardCandidate = 0;
+            let candidateChosen = false;
+            let instances = 1;
 
-function displayCards(cardsArray) {
-    const table = document.querySelector("main");
-    let duplicates = 1;
-    //criar a cartinha
-    table.innerHTML += `<article>${cardsArray}</article>`;
-
-    //decidir qual imagem será colocada nessa cartinha (back)        
-        while(duplicates != 0){
-            //se index é par, gif é randomizado da lista
-            if(i % 2 == 0){
-                imgBackRandom.push = getRandomInt(7);
-                duplicates = 0;
-                
-                //se o gif desse número já foi escolhido antes, 
-                //escolher de novo 
-                    //percorrer cartas já escolhidas                             
-                    for(j = 0; j < i; j++){
-                        //denunciar duplicatas
-                        if(imgBackRandom[i] == imgBackRandom[j]){
-                            duplicates++;
-                        }
+            //processo seletivo de candidato a carta:
+            //um valor para carta só pode aparecer duas vezes
+            //se o valor já existe em duas cartas, escolher outro valor
+            while(candidateChosen == false){
+                cardCandidate = Math.floor(Math.random()*8);
+                for(let j = 1; j < n; j++){
+                    if(cardCandidate = card[j]){
+                        instances++;
                     }
-        } else {
-            //se index é ímpar, gif é igual ao de index - 1
-            imgBackRandom[i] == imgBackRandom[i-1]
-        }
-
-        
-        }
+                }
+                if(instances <= 2){
+                    candidateChosen = true;
+                } else {
+                    candidateChosen = false;
+                }
+            }
             
-    //colocar classe emptyCard em cada carta criada
-    //para identificar que essa carta precisa ser preenchida
-    document.querySelector("article").classList.add(".emptyCard");
-    
-    //"no primeiro elemento que tiver as classes emptyCard e front,
-    //adicionar imagem front."
-    document.querySelector(".emptyCard.front").innerHTML = `<img src="img/front.png">`
-  
-    //"no primeiro elemento que tiver as classes emptyCard e back,
-    //adicionar imagem back
-    //(que foi selecionada no if acima)"
-    document.querySelector(".emptyCard.back").innerHTML = `<img src="${imgBackRandom[i]}.gif">`
-    
-    //"No final, remover a classe emptyCard da carta que ganhou essas classes
-    //para que ela não seja modificada no ciclo seguinte."
-    document.querySelector(".emptyCard").classList.remove(".emptyCard")
+            //ao vitorioso, os espólios
+            card[i] = cardCandidate;
+*/
 
+            main.innerHTML +=
+        `
+            <article data-identifier="card" onclick="flipCard(this)">
+                <div class="back hide" data-identifier="back-face">
+                    <img src="img/${i}.gif">
+                </div>
+                <div class="front show" data-identifier="front-face">
+                    <img src="img/front.png"> ${i}
+                </div>
+            </article>
+    
+        `;
+        }
+
+function randomCard(){
+    const card = Math.floor(Math.random()*8);
+    return card;
+    
+}
+
+function flipCard(card){
+    card.classList.toggle(".hide");
+}
+
+function comparador() { 
+	return Math.random() - 0.5; 
 }

@@ -16,7 +16,7 @@ main {
     justify-content: center;
     align-items: center;
 
-    width: 800px;
+    width: 1000px;
     background-color: salmon;
     margin: 0 auto;
 }
@@ -29,6 +29,12 @@ h1 {
 }
 
 article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 25px;
+
     width: 117px;
     height: 146px;
     background: #A7E9AF;
@@ -39,18 +45,6 @@ article {
 }
 
 .hide {
-    display: none;
-}
-
-.show {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 25px;
-}
-
-.if-i-dont-add-this-the-code-doesnt-work {
     display: none;
 }
 
