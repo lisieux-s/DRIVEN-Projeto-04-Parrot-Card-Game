@@ -8,3 +8,5 @@ preciso fazer uma array com os pares e depois randomizar essa array?
     tipo clicar nas cartas mto rapido
 
 why the fuck does it only reveal a card every few clicks
+
+why is card undefined?
