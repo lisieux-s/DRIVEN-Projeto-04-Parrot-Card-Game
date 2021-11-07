@@ -1,4 +1,5 @@
 n = prompt("Com quantas cartas você quer jogar?");
+pairsLeft = n/2;
 const main = document.querySelector("main");
 
 //repetir prompt até entrar n válido
@@ -26,18 +27,69 @@ for(let i = 0; i < n; i++) {
         `
             <article data-identifier="card" onclick="flipCard(this)">
                 <div class="back hide" data-identifier="back-face">
-                    <img src="img/${pairsShuffled}.gif">
+                    <img src="img/${pairsShuffled[i]}.gif" id="${pairsShuffled[i]}">
                 </div>
-                <div class="front show" data-identifier="front-face">
-                    <img src="img/front.png"> ${pairsShuffled[i]}
+                <div class="front" data-identifier="front-face">
+                    <img src="img/front.png">
                 </div>
             </article>
     
         `;
         }
 
+let firstParrot = 0;
+let secondParrot = 0;
+let previousCard = document.querySelector(".previousCard");
+console.log(previousCard);
+
 function flipCard(card){
-    card.classList.toggle(".hide");
+    const cardFront = card.querySelector(".front");
+    const cardBack = card.querySelector(".back");
+    if(previousCard == null){
+        cardFront.classList.add("hide");
+        cardBack.classList.remove("hide");
+        
+        //flag as selected
+        card.classList.add("previousCard")
+        previousCard = card;
+
+        //fetch the first parrot
+        firstParrot = card.querySelector("img").getAttribute("id");
+        console.log(firstParrot);
+
+    } else {
+        cardFront.classList.add("hide");
+        cardBack.classList.remove("hide");
+
+        //fetch the second parrot
+        secondParrot = card.querySelector("img").getAttribute("id");
+
+        //compare parrots
+        if(firstParrot == secondParrot){
+            pairsLeft--;
+            console.log(pairsLeft) //well the counter is working at least
+        } else {
+            const previousCardFront = previousCard.querySelector(".front");
+            const previousCardBack = previousCard.querySelector(".back");
+
+            //search for previous card and hide its parrot
+            previousCardFront.classList.remove("hide");
+            previousCardBack.classList.add("hide");
+            
+            //hide the current card's parrot
+            cardFront.classList.remove("hide");
+            cardBack.classList.add("hide");
+        }
+        
+        previousCard.classList.remove("previousCard");
+        
+    }
+
+    
+}
+
+function errouOtário(){
+    
 }
 
 function comparador() { 

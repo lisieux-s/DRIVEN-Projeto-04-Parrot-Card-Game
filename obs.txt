@@ -1,7 +1,10 @@
-pq a img nao centraliza direito? tive que usar padding pra consertar
+♥ pq a img nao centraliza direito? tive que usar padding pra consertar
 
 nao to conseguindo randomizar as cartas.
 preciso fazer uma array com os pares e depois randomizar essa array?
+    ♥ resolvido
 
-verificar casos de explodir o programa, 
+*verificar casos de explodir o programa, 
     tipo clicar nas cartas mto rapido
+
+why the fuck does it only reveal a card every few clicks
