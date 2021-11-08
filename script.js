@@ -26,10 +26,10 @@ for (let i = 0; i < n; i++) {
     main.innerHTML +=
         `
             <article data-identifier="card" onclick="flipCard(this)">
-                <div class="back hide" data-identifier="back-face">
+                <div class="back hide" data-identifier="front-face">
                     <img src="img/${pairsShuffled[i]}.gif" alt="${pairsShuffled[i]}" id="${pairsShuffled[i]}">
                 </div>
-                <div class="front" data-identifier="front-face">
+                <div class="front" data-identifier="back-face">
                     <img src="img/front.png">
                 </div>
             </article>
