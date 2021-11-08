@@ -19,7 +19,6 @@ for (let i = 1; i <= n / 2; i++) {
 
 //embaralhar pares
 const pairsShuffled = pairs.sort(comparador);
-console.log(pairsShuffled);
 
 //inserir array embaralhada como cartas no html
 
@@ -28,7 +27,7 @@ for (let i = 0; i < n; i++) {
         `
             <article data-identifier="card" onclick="flipCard(this)">
                 <div class="back hide" data-identifier="back-face">
-                    <img src="img/${pairsShuffled[i]}.gif" id="${pairsShuffled[i]}">
+                    <img src="img/${pairsShuffled[i]}.gif" alt="${pairsShuffled[i]}" id="${pairsShuffled[i]}">
                 </div>
                 <div class="front" data-identifier="front-face">
                     <img src="img/front.png">
@@ -50,7 +49,6 @@ let secondParrot = 0;
 let newAttempt = true;
 
 let previousCard = document.querySelector(".previousCard");
-console.log(previousCard);
 
 function flipCard(card) {
     moves++;
@@ -67,7 +65,6 @@ function flipCard(card) {
 
         //fetch the first parrot
         firstParrot = card.querySelector("img").getAttribute("id");
-        console.log(firstParrot);
 
         newAttempt = false;
 
