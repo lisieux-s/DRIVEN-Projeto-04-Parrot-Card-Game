@@ -1,5 +1,7 @@
 n = prompt("Com quantas cartas você quer jogar?");
 const main = document.querySelector("main");
+const timerBox = document.querySelector(".timer")
+let t = 0;
 
 pairsLeft = n / 2;
 
@@ -25,10 +27,10 @@ for (let i = 0; i < n; i++) {
     main.innerHTML +=
         `
             <article data-identifier="card" onclick="flipCard(this)">
-                <div class="back face hide" data-identifier="back-face">
+                <div class="back hide" data-identifier="back-face">
                     <img src="img/${pairsShuffled[i]}.gif" id="${pairsShuffled[i]}">
                 </div>
-                <div class="front face" data-identifier="front-face">
+                <div class="front" data-identifier="front-face">
                     <img src="img/front.png">
                 </div>
             </article>
@@ -36,28 +38,42 @@ for (let i = 0; i < n; i++) {
         `;
 }
 
+//iniciar timer
+/*setInterval(() => {
+    timer()
+  }, 1000)
+*/
+
+let moves = 0;
 let firstParrot = 0;
 let secondParrot = 0;
+let newAttempt = true;
+
 let previousCard = document.querySelector(".previousCard");
 console.log(previousCard);
 
 function flipCard(card) {
+    moves++;
     const cardFront = card.querySelector(".front");
     const cardBack = card.querySelector(".back");
-    if (previousCard == null) {
+    if (newAttempt === true) {
         //reveal the first card
         cardFront.classList.add("hide");
         cardBack.classList.remove("hide");
 
         //flag as selected
-        card.classList.add("previousCard")
+        card.classList.add("previousCard");
         previousCard = card;
 
         //fetch the first parrot
         firstParrot = card.querySelector("img").getAttribute("id");
         console.log(firstParrot);
 
+        newAttempt = false;
+
     } else {
+        //block third selection
+        document.querySelector("span").classList.remove("hide");
         //reveal the second card
         cardFront.classList.add("hide");
         cardBack.classList.remove("hide");
@@ -69,13 +85,27 @@ function flipCard(card) {
         if (firstParrot == secondParrot) {
             card.removeAttribute("onclick");
             previousCard.removeAttribute("onclick");
+
+            card.classList.add("match");
+            previousCard.classList.add("match");
+
             pairsLeft--;
-            console.log(pairsLeft) //well the counter is working at least
+            document.querySelector("span").classList.toggle("hide");
         } else {
-            setTimeout(mismatch, 1000);
-            mismatch(card);
+            setTimeout(() => {
+                mismatch(card)
+              }, 1000)
+        
         }
+        //resetar o previousCard
         previousCard.classList.remove("previousCard");
+
+       
+        newAttempt = true;
+    }
+
+    if(pairsLeft === 0){
+        endGame(moves);
     }
 
 }
@@ -94,6 +124,27 @@ function mismatch(card) {
     //hide the current card's parrot
     cardFront.classList.remove("hide");
     cardBack.classList.add("hide");
+
+     //remove selection blocker
+     document.querySelector("span").classList.toggle("hide");
+}
+
+function timer() {
+    while(pairsLeft > 0) {
+        t++;
+        timerBox.innerHTML = 
+        `
+            <p>${t}</p>
+        `;
+    }
+}
+
+function endGame(X){
+    alert("Você ganhou em " + X + " jogadas!");
+    const playAgain = prompt("Jogar novamente? (s/n)");
+    if(playAgain == "s"){
+        location.reload(true);
+    }
 }
 
 function comparador() {
