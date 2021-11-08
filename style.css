@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    
 }
 body {
     background: #EEF9BF;
@@ -17,15 +18,19 @@ main {
     align-items: center;
 
     width: 1000px;
-    background-color: salmon;
     margin: 0 auto;
 }
 
 h1 {
+    font-family: 'Roboto', sans-serif;
     font-size: 56px;
     font-weight: 700;
     color: #75B79E;
     text-align: center;
+    margin: 40px;
+}
+input {
+    display: none;
 }
 
 article {
@@ -35,9 +40,7 @@ article {
     flex-wrap: wrap;
     padding: 25px;
 
-    background-color: #A7E9AF;
     border-radius: 5px;
-
     width: 117px;
     height: 146px;
 
@@ -53,7 +56,10 @@ article {
         width: 100%;
         flex-direction: column;
     }
-
+ 
+}
+.hide {
+    display: none;
 }
 
 .card {
@@ -61,3 +67,22 @@ article {
     height: 146px;
     position: relative;
   }
+
+  .face {
+    width: 117px;
+    height: 146px;
+    background-color: #A7E9AF;
+    border-radius: 10px;
+    border: 1px solid #99CEA8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+  }
+
+
+

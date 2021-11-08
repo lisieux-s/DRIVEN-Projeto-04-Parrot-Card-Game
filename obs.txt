@@ -7,6 +7,26 @@ preciso fazer uma array com os pares e depois randomizar essa array?
 *verificar casos de explodir o programa, 
     tipo clicar nas cartas mto rapido
 
-why the fuck does it only reveal a card every few clicks
-
 why is card undefined?
+
+:checked + .back {
+    transform: rotateY(180deg);
+  }
+
+  .card .back{
+    transform: rotateY(0deg);
+  }
+
+  .card .front {
+    transform: rotateY(-180deg);
+  }
+
+
+
+    .card .back {
+    transform: rotateY(-180deg);
+  }
+
+  input:checked + .front {
+    transform: rotateY(180deg);
+  }
